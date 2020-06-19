@@ -1,0 +1,22 @@
+:host {
+  display: flex;
+  align-items: center;
+  //   padding: 0 0.5rem;
+  margin: 0.5rem 0;
+}
+
+.complete {
+  text-decoration: line-through;
+  font-weight: 200;
+}
+
+h2 {
+  flex: 1 1 auto;
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+}
+
+h3 {
+  margin: 0;
+}

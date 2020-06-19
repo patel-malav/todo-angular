@@ -1,0 +1,42 @@
+<h1>
+  New Task in <b>{{ data.listName }}</b>
+</h1>
+<form [formGroup]="newTaskForm" (submit)="addTask()">
+  <mat-form-field>
+    <mat-label>Task</mat-label>
+    <input type="text" matInput formControlName="title" />
+  </mat-form-field>
+  <mat-form-field [ngClass]="{ hidden: !descp }">
+    <mat-label>Description</mat-label>
+    <textarea matInput minRows="4" formControlName="descp"></textarea>
+  </mat-form-field>
+  <mat-form-field [ngClass]="{ hidden: !time }">
+    <mat-label>Date</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="time" />
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <div id="button-panel">
+    <button type="button" mat-icon-button (click)="toggleDescription()">
+      <mat-icon>subject</mat-icon>
+    </button>
+    <button
+      type="button"
+      mat-icon-button
+      (click)="toggleTime(); time ? picker.open() : picker.close()"
+    >
+      <mat-icon>schedule</mat-icon>
+    </button>
+    <div class="spacer"></div>
+    <button type="button" mat-raised-button color="warn" (click)="cancel()">
+      Cancel
+    </button>
+    <button
+      type="submit"
+      mat-raised-button
+      color="primary"
+      [disabled]="!newTaskForm.valid"
+    >
+      Save
+    </button>
+  </div>
+</form>

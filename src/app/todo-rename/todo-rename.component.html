@@ -1,0 +1,23 @@
+<h1>
+  Rename <b>{{ data.name }}</b>
+</h1>
+<form [formGroup]="renameForm" (submit)="change()">
+  <mat-form-field>
+    <mat-label>New Name</mat-label>
+    <input type="text" matInput formControlName="name" />
+  </mat-form-field>
+  <div id="button-panel">
+    <div class="spacer"></div>
+    <button type="button" mat-raised-button color="warn" (click)="cancel()">
+      Cancel
+    </button>
+    <button
+      type="submit"
+      mat-raised-button
+      color="primary"
+      [disabled]="!renameForm.valid"
+    >
+      Save
+    </button>
+  </div>
+</form>

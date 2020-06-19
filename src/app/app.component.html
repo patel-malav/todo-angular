@@ -1,1 +1,33 @@
-<h1>HELLO WORLD!!</h1>
+<ng-container *ngIf="auth.user | async as user; else spinner">
+  <h1>{{ user.name }}</h1>
+  <h2>List {{ listName }}</h2>
+  <app-todo-list *ngIf="!menuOpen; else menu"></app-todo-list>
+  <ng-template #menu>
+    <app-todo-menu></app-todo-menu>
+  </ng-template>
+  <nav>
+    <button mat-icon-button (click)="toggleMenu()">
+      <mat-icon *ngIf="!menuOpen">menu</mat-icon>
+      <mat-icon *ngIf="menuOpen">close</mat-icon>
+    </button>
+    <button mat-mini-fab color="secondary" (click)="newTask()">
+      <mat-icon>add</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="settings"
+      (click)="toggleSettings()"
+    >
+      <mat-icon *ngIf="!settingOpen">more_vert</mat-icon>
+      <mat-icon *ngIf="settingOpen">more_horiz</mat-icon>
+    </button>
+  </nav>
+  <mat-menu (closed)="toggleSettings()" #settings="matMenu" xPosition="before">
+    <button mat-menu-item>Sort by</button>
+    <button mat-menu-item>Rename List</button>
+    <button mat-menu-item>Delete List</button>
+  </mat-menu>
+</ng-container>
+<ng-template #spinner>
+  <mat-spinner id="spinner"></mat-spinner>
+</ng-template>

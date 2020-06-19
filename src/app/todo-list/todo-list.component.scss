@@ -1,0 +1,32 @@
+@import "../../variables";
+
+:host {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: $font white;
+  margin: 1rem;
+  border-radius: 4px;
+}
+
+mat-accordion {
+  display: block;
+  height: 100%;
+}
+
+mat-expansion-panel-header {
+  //   background-color: $background-accent;
+  //   color: #fff;
+  ::ng-deep .mat-expansion-panel-header-title {
+    font-size: 2rem;
+    line-height: 3rem;
+  }
+}
+
+h2 {
+  padding: 0 1rem;
+  font: 300 2rem/3rem Roboto;
+  border-style: solid dashed;
+  border-color: $background-accent;
+  border-radius: 4px;
+  border-width: thin;
+}

@@ -1,0 +1,7 @@
+<button mat-icon-button (click)="toggleComplete()">
+  <mat-icon *ngIf="!completed">crop_square</mat-icon>
+  <mat-icon *ngIf="completed">check</mat-icon>
+</button>
+<h2 [ngClass]="{ complete: completed }">Task Uno</h2>
+<h3 *ngIf="time">{{ time | date: "EEE,dd MMM" }}</h3>
+<mat-icon *ngIf="time">event</mat-icon>

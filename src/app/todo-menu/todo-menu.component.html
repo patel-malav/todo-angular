@@ -1,0 +1,30 @@
+<mat-divider></mat-divider>
+<div id="lists">
+  <div>
+    <h2>My Tasks</h2>
+    <button mat-icon-button (click)="edit('My Tasks')">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button (click)="delete('My Tasks')">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+  <div>
+    <h2>Long Term Stocks</h2>
+    <button mat-icon-button (click)="edit($event)">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button><mat-icon>delete</mat-icon></button>
+  </div>
+  <div>
+    <h2>Short Term Stocks</h2>
+    <button mat-icon-button (click)="edit($event)">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button><mat-icon>delete</mat-icon></button>
+  </div>
+</div>
+<mat-divider></mat-divider>
+<!-- <button mat-raised-button></button> -->
+<button mat-raised-button>⭕ Change Password</button>
+<mat-divider></mat-divider>
