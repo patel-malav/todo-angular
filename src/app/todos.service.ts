@@ -121,10 +121,12 @@ export class TodosService {
     this.selected.pipe(take(1)).subscribe((todo) => {
       const selectedTask = todo.tasks.find((task) => task.id === id);
       Object.assign(selectedTask, title && { title });
+      console.log(completed, selectedTask);
       Object.assign(
         selectedTask,
-        (completed !== undefined || completed !== null) && { completed }
+        completed !== undefined && completed !== null && { completed }
       );
+      console.log(completed, selectedTask);
       Object.assign(selectedTask, time && { time });
       Object.assign(selectedTask, descp && { descp });
       selectedTask.updatedAt = new Date().toISOString();

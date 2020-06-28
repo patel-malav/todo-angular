@@ -1,0 +1,34 @@
+<ng-container *ngIf="auth.user | async as user; else spinner">
+  <h1>{{ user.name }}</h1>
+  <h2>{{ (todos.selected | async)?.name | titlecase }}</h2>
+  <app-todo-list *ngIf="!todos.menuOpen; else menu"></app-todo-list>
+  <ng-template #menu>
+    <app-todo-menu></app-todo-menu>
+  </ng-template>
+  <nav>
+    <div>
+      <button mat-icon-button (click)="toggleMenu()">
+        <mat-icon *ngIf="!todos.menuOpen">menu</mat-icon>
+        <mat-icon *ngIf="todos.menuOpen">close</mat-icon>
+      </button>
+    </div>
+    <div>
+      <button
+        mat-mini-fab
+        color="secondary"
+        (click)="todos.menuOpen ? newTodo() : newTask()"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <div>
+      <button mat-raised-button color="warn" (click)="auth.logout()">
+        <mat-icon>power_settings_new</mat-icon>
+        Log Out
+      </button>
+    </div>
+  </nav>
+</ng-container>
+<ng-template #spinner>
+  <mat-spinner id="spinner"></mat-spinner>
+</ng-template>

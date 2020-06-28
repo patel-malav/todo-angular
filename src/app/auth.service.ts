@@ -15,4 +15,6 @@ export class AuthService {
       this.user.next({ name: 'Malav' });
     }, 2000);
   }
+
+  logout() {}
 }
