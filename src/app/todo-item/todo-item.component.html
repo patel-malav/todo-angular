@@ -1,7 +1,20 @@
 <button mat-icon-button (click)="toggleComplete()">
-  <mat-icon *ngIf="!completed">crop_square</mat-icon>
-  <mat-icon *ngIf="completed">check</mat-icon>
+  <mat-icon *ngIf="!task.completed">crop_square</mat-icon>
+  <mat-icon *ngIf="task.completed">check</mat-icon>
 </button>
-<h2 [ngClass]="{ complete: completed }">Task Uno</h2>
-<h3 *ngIf="time">{{ time | date: "EEE,dd MMM" }}</h3>
-<mat-icon *ngIf="time">event</mat-icon>
+<h2 [ngClass]="{ complete: task.completed }">
+  <ng-content></ng-content>
+</h2>
+<button mat-icon-button class="hidden" color="secondary" (click)="edit()">
+  <mat-icon>edit</mat-icon>
+</button>
+<button
+  mat-icon-button
+  class="hidden"
+  color="warn"
+  (click)="todos.deleteTask(task.id)"
+>
+  <mat-icon>delete</mat-icon>
+</button>
+<mat-icon *ngIf="task.time">event</mat-icon>
+<h3 *ngIf="task.time">{{ task.time | date: "EEE,dd MMM" }}</h3>

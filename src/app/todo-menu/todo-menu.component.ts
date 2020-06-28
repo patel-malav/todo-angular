@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
-import { TasksService } from '../tasks.service';
 import { MatDialog } from '@angular/material/dialog';
 import { TodoRenameComponent } from '../todo-rename/todo-rename.component';
+import { AuthService } from '../auth.service';
+import { TodosService } from '../todos.service';
 
 @Component({
   selector: 'app-todo-menu',
@@ -13,23 +13,19 @@ export class TodoMenuComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     public auth: AuthService,
-    public tasks: TasksService
+    public todos: TodosService
   ) {}
   ngOnInit(): void {}
 
-  edit(name: string) {
+  edit(id: string, name: string) {
     const editListRef = this.dialog.open(TodoRenameComponent, {
       minWidth: '20rem',
       width: '80%',
       maxWidth: '40rem',
       data: { name },
     });
-    editListRef
-      .afterClosed()
-      .subscribe((newName: any) => console.log(`Change ${name} to ${newName}`));
-  }
-
-  delete(id: any) {
-    console.log(id);
+    editListRef.afterClosed().subscribe((newName: string) => {
+      this.todos.updateTodo(id, { name: newName });
+    });
   }
 }

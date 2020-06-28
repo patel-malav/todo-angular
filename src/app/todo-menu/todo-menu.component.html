@@ -1,30 +1,23 @@
 <mat-divider></mat-divider>
 <div id="lists">
-  <div>
-    <h2>My Tasks</h2>
-    <button mat-icon-button (click)="edit('My Tasks')">
+  <div
+    [ngClass]="{ selected: list.selected }"
+    *ngFor="let list of todos.lists$ | async"
+  >
+    <h2 (click)="todos.selectTodo(list.id)">{{ list.name | titlecase }}</h2>
+    <button mat-icon-button class="hidden" (click)="edit(list.id, list.name)">
       <mat-icon>edit</mat-icon>
     </button>
-    <button mat-icon-button (click)="delete('My Tasks')">
+    <button
+      mat-icon-button
+      class="hidden"
+      color="warn"
+      (click)="todos.deleteTodo(list.id)"
+    >
       <mat-icon>delete</mat-icon>
     </button>
   </div>
-  <div>
-    <h2>Long Term Stocks</h2>
-    <button mat-icon-button (click)="edit($event)">
-      <mat-icon>edit</mat-icon>
-    </button>
-    <button mat-icon-button><mat-icon>delete</mat-icon></button>
-  </div>
-  <div>
-    <h2>Short Term Stocks</h2>
-    <button mat-icon-button (click)="edit($event)">
-      <mat-icon>edit</mat-icon>
-    </button>
-    <button mat-icon-button><mat-icon>delete</mat-icon></button>
-  </div>
 </div>
 <mat-divider></mat-divider>
-<!-- <button mat-raised-button></button> -->
 <button mat-raised-button>⭕ Change Password</button>
 <mat-divider></mat-divider>

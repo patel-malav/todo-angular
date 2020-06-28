@@ -11,8 +11,10 @@
 
 #lists {
   flex: 1 1 auto;
-  button[mat-icon-button] {
-    margin: 0;
+  font-size: 1.8rem;
+  button {
+    margin: 0 0.2rem;
+    height: 3rem;
   }
   div {
     background-color: #fff;
@@ -20,17 +22,31 @@
     border: 4px solid $background-accent;
     border-radius: 4px;
     margin: 0.5rem 0;
-    padding: 0 0.5rem;
+    padding: 0.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    .hidden {
+      visibility: hidden;
+    }
+    &:hover {
+      .hidden {
+        visibility: visible;
+      }
+    }
   }
   h2 {
+    cursor: pointer;
     font-weight: 200;
     font-size: 1.8rem;
     line-height: 2.8rem;
     flex: 1 1 auto;
     margin: 0;
+    padding-left: 1rem;
+  }
+  .selected {
+    background-color: $font;
+    border-radius: 1rem 0 1rem 0;
   }
 }
 

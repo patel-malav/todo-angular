@@ -1,8 +1,17 @@
+@import "../../variables";
+
 :host {
   display: flex;
   align-items: center;
-  //   padding: 0 0.5rem;
   margin: 0.5rem 0;
+  .hidden {
+    visibility: hidden;
+  }
+  &:hover {
+    .hidden {
+      visibility: visible;
+    }
+  }
 }
 
 .complete {
@@ -19,4 +28,9 @@ h2 {
 
 h3 {
   margin: 0;
+}
+
+.badge {
+  background-color: $font;
+  padding: 0.25rem;
 }

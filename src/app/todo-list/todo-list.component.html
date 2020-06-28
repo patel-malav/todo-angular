@@ -1,28 +1,34 @@
 <mat-accordion multi="true">
   <mat-expansion-panel expanded="true" color="primary">
     <mat-expansion-panel-header>
-      <mat-panel-title>Today's</mat-panel-title>
+      <mat-panel-title>Today</mat-panel-title>
     </mat-expansion-panel-header>
-    <app-todo-item></app-todo-item>
-    <app-todo-item></app-todo-item>
-    <app-todo-item></app-todo-item>
+    <app-todo-item *ngFor="let task of today" [task]="task">
+      {{ task.title | titlecase }}
+    </app-todo-item>
   </mat-expansion-panel>
   <mat-expansion-panel expanded="true">
     <mat-expansion-panel-header>
-      <mat-panel-title>Tomorrow's</mat-panel-title>
+      <mat-panel-title>Scheduled</mat-panel-title>
     </mat-expansion-panel-header>
-    <app-todo-item></app-todo-item>
+    <app-todo-item *ngFor="let task of scheduled" [task]="task">
+      {{ task.title | titlecase }}
+    </app-todo-item>
   </mat-expansion-panel>
   <mat-expansion-panel expanded="true">
     <mat-expansion-panel-header>
       <mat-panel-title>Remaining</mat-panel-title>
     </mat-expansion-panel-header>
-    <app-todo-item></app-todo-item>
+    <app-todo-item *ngFor="let task of remaining" [task]="task">
+      {{ task.title | titlecase }}
+    </app-todo-item>
   </mat-expansion-panel>
   <mat-expansion-panel expanded="true">
     <mat-expansion-panel-header>
       <mat-panel-title>Completed</mat-panel-title>
     </mat-expansion-panel-header>
-    <app-todo-item></app-todo-item>
+    <app-todo-item *ngFor="let task of completed" [task]="task">
+      {{ task.title | titlecase }}
+    </app-todo-item>
   </mat-expansion-panel>
 </mat-accordion>

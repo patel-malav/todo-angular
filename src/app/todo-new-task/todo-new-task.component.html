@@ -1,18 +1,36 @@
-<h1>
-  New Task in <b>{{ data.listName }}</b>
+<h1 *ngIf="data.listName">
+  New Task in <b>{{ data.listName | titlecase }}</b>
+</h1>
+<h1 *ngIf="data.taskName">
+  Edit Task <b>{{ data.taskName | titlecase }}</b>
 </h1>
 <form [formGroup]="newTaskForm" (submit)="addTask()">
   <mat-form-field>
     <mat-label>Task</mat-label>
-    <input type="text" matInput formControlName="title" />
+    <input
+      type="text"
+      matInput
+      formControlName="title"
+      [placeholder]="data.taskName ? data.taskName : 'Name'"
+    />
   </mat-form-field>
   <mat-form-field [ngClass]="{ hidden: !descp }">
     <mat-label>Description</mat-label>
-    <textarea matInput minRows="4" formControlName="descp"></textarea>
+    <textarea
+      matInput
+      minRows="4"
+      formControlName="descp"
+      [placeholder]="data.descp ? data.descp : 'Details'"
+    ></textarea>
   </mat-form-field>
   <mat-form-field [ngClass]="{ hidden: !time }">
     <mat-label>Date</mat-label>
-    <input matInput [matDatepicker]="picker" formControlName="time" />
+    <input
+      matInput
+      [matDatepicker]="picker"
+      formControlName="time"
+      [placeholder]="(data.time ? data.time : null) | date: 'MM/dd/yyyy'"
+    />
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
   <div id="button-panel">

@@ -5,6 +5,9 @@ import { MatDatepicker } from '@angular/material/datepicker';
 
 interface DialogData {
   listName: string;
+  taskName?: string;
+  descp?: string;
+  time?: string;
 }
 
 @Component({
@@ -20,7 +23,7 @@ export class TodoNewTaskComponent implements OnInit {
   constructor(
     public newTaskRef: MatDialogRef<TodoNewTaskComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    private fb: FormBuilder
+    fb: FormBuilder
   ) {
     this.newTaskForm = fb.group({
       title: [null, Validators.required],
@@ -37,8 +40,7 @@ export class TodoNewTaskComponent implements OnInit {
     this.time = !this.time;
   }
   addTask(): void {
-    console.log(this.newTaskForm.value);
-    this.newTaskRef.close();
+    this.newTaskRef.close(this.newTaskForm.value);
   }
   cancel(): void {
     this.newTaskRef.close();
