@@ -1,1 +1,24 @@
-<p>login works!</p>
+<h1>Todo Angular</h1>
+<a mat-raised-button color="warn" routerLink="/register">Register</a>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <mat-form-field color="accent">
+    <mat-label>Email</mat-label>
+    <input type="text" matInput formControlName="email" />
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <mat-label>Password</mat-label>
+    <input type="password" matInput formControlName="password" />
+  </mat-form-field>
+  <mat-checkbox formControlName="remember" color="accent">
+    Remember Me
+  </mat-checkbox>
+  <button
+    type="submit"
+    id="submit-button"
+    mat-raised-button
+    color="accent"
+    [disabled]="!loginForm.valid"
+  >
+    Login
+  </button>
+</form>

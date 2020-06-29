@@ -13,6 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +27,8 @@ import { TodoNewTaskComponent } from './todo-new-task/todo-new-task.component';
 import { TodoMenuComponent } from './todo-menu/todo-menu.component';
 import { TodoRenameComponent } from './todo-rename/todo-rename.component';
 import { TodoNewListComponent } from './todo-new-list/todo-new-list.component';
+import { RegisterComponent } from './register/register.component';
+import { ResetComponent } from './reset/reset.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,8 @@ import { TodoNewListComponent } from './todo-new-list/todo-new-list.component';
     TodoMenuComponent,
     TodoRenameComponent,
     TodoNewListComponent,
+    RegisterComponent,
+    ResetComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +58,7 @@ import { TodoNewListComponent } from './todo-new-list/todo-new-list.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatDividerModule,
+    MatCheckboxModule,
     AppRoutingModule,
   ],
   providers: [],

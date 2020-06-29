@@ -1,0 +1,30 @@
+<h1>Todo Angular</h1>
+<a mat-raised-button color="warn" routerLink="/login">Login</a>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <mat-form-field color="accent">
+    <mat-label>Username</mat-label>
+    <input type="text" matInput formControlName="username" />
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <mat-label>Email</mat-label>
+    <input type="email" matInput formControlName="email" />
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <mat-label>Password</mat-label>
+    <input type="password" matInput formControlName="password" />
+  </mat-form-field>
+  <h4>
+    <mat-checkbox formControlName="consent" color="accent"> 👌 I,</mat-checkbox>
+    Consent to allow todo angular to store and process limited personal
+    information in order to manage my account.
+  </h4>
+  <button
+    type="submit"
+    id="submit-button"
+    mat-raised-button
+    color="accent"
+    [disabled]="!registerForm.valid"
+  >
+    Register
+  </button>
+</form>

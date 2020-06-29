@@ -1,0 +1,55 @@
+<h1>Todo Angular</h1>
+<a mat-raised-button color="warn" (click)="location.back()">
+  <mat-icon>arrow_back</mat-icon>
+  Back
+</a>
+<form
+  *ngIf="!codeSent"
+  [formGroup]="resetCodeForm"
+  (ngSubmit)="onSubmitResetCode()"
+  autocomplete="off"
+>
+  <h2>Reset Password</h2>
+  <mat-form-field color="accent">
+    <mat-label>Email</mat-label>
+    <input type="email" matInput formControlName="email" autocomplete="off" />
+  </mat-form-field>
+  <button
+    type="submit"
+    id="submit-button"
+    mat-raised-button
+    color="accent"
+    [disabled]="!resetCodeForm.valid"
+  >
+    Send Me Reset Code
+  </button>
+</form>
+<form
+  *ngIf="codeSent"
+  [formGroup]="resetPasswordForm"
+  (ngSubmit)="onSubmitResetPassword()"
+  autocomplete="off"
+>
+  <mat-form-field color="accent">
+    <mat-label>Reset Code</mat-label>
+    <input type="text" matInput formControlName="code" autocomplete="off" />
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <mat-label>Password</mat-label>
+    <input
+      type="password"
+      matInput
+      formControlName="password"
+      autocomplete="off"
+    />
+  </mat-form-field>
+  <button
+    type="submit"
+    id="submit-button"
+    mat-raised-button
+    color="accent"
+    [disabled]="!resetPasswordForm.valid"
+  >
+    Reset Password
+  </button>
+</form>

@@ -33,7 +33,7 @@ form {
   grid-area: form;
   border-radius: 1rem;
   padding: 2rem;
-  height: 80%;
+  height: 100%;
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
@@ -55,10 +55,17 @@ mat-label {
 }
 
 button,
-mat-checkbox {
+h4 {
   text-align: center;
-  font: 300 1.5rem/2.5rem Roboto;
   min-width: 60%;
+}
+
+button {
+  font: 300 1.5rem/2.5rem Roboto;
+}
+
+h4 {
+  font: 300 1rem/2rem Roboto;
 }
 
 ::ng-deep .mat-checkbox-frame {

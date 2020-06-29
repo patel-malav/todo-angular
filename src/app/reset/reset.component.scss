@@ -15,6 +15,7 @@
   transform: translate(-50%, -50%);
   margin: auto;
 }
+
 h1 {
   margin: 0;
   grid-area: title;
@@ -54,13 +55,8 @@ mat-label {
   color: #fff;
 }
 
-button,
-mat-checkbox {
+button {
   text-align: center;
   font: 300 1.5rem/2.5rem Roboto;
   min-width: 60%;
-}
-
-::ng-deep .mat-checkbox-frame {
-  border-color: #fff;
 }

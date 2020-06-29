@@ -17,4 +17,16 @@ export class AuthService {
   }
 
   logout() {}
+  emailSignIn(email: string, password: string) {
+    throw new Error('Method not implemented.');
+  }
+  emailSignUp(username: string, email: string, password: string) {
+    throw new Error('Method not implemented.');
+  }
+  updatePassword(code: string, password: string) {
+    throw new Error('Method not implemented.');
+  }
+  sendResetCode(email: string) {
+    throw new Error('Method not implemented.');
+  }
 }
