@@ -5,7 +5,6 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod --aot",
-    "github-pages": "ng build --prod=true --outputPath=./docs",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
