@@ -1,10 +1,12 @@
 <mat-divider></mat-divider>
-<div id="lists">
+<div id="lists" *ngIf="todos.lists$ | async as lists; else spinner">
   <div
-    [ngClass]="{ selected: list.selected }"
-    *ngFor="let list of todos.lists$ | async"
+    *ngFor="let list of lists"
+    [ngClass]="{ selected: todos.selectedTodo?.id === list.id }"
   >
-    <h2 (click)="todos.selectTodo(list.id)">{{ list.name | titlecase }}</h2>
+    <h2 (click)="todos.selectTodo(list.id)">
+      {{ list.name | titlecase }}
+    </h2>
     <button mat-icon-button class="hidden" (click)="edit(list.id, list.name)">
       <mat-icon>edit</mat-icon>
     </button>
@@ -18,6 +20,11 @@
     </button>
   </div>
 </div>
+<ng-template #spinner>
+  <div id="spinner">
+    <mat-spinner color="accent"></mat-spinner>
+  </div>
+</ng-template>
 <mat-divider></mat-divider>
 <a mat-raised-button routerLink="/reset">⭕ Change Password</a>
 <mat-divider></mat-divider>

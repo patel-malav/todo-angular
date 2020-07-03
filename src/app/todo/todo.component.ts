@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { TodoNewTaskComponent } from '../todo-new-task/todo-new-task.component';
@@ -10,35 +10,15 @@ import { TodoNewListComponent } from '../todo-new-list/todo-new-list.component';
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.scss'],
 })
-export class TodoComponent implements OnInit {
-  selectedName = null;
+export class TodoComponent {
   constructor(
     public auth: AuthService,
     public todos: TodosService,
     private dialog: MatDialog
   ) {}
 
-  ngOnInit(): void {
-    this.todos.selected.subscribe((list) => {
-      this.selectedName = list?.name;
-    });
-  }
-
   toggleMenu() {
     this.todos.menuOpen = !this.todos.menuOpen;
-  }
-
-  newTask() {
-    const newTaskRef = this.dialog.open(TodoNewTaskComponent, {
-      minWidth: '20rem',
-      width: '80%',
-      maxWidth: '40rem',
-      data: { listName: this.selectedName, time: new Date().toISOString() },
-    });
-    newTaskRef.afterClosed().subscribe((data) => {
-      console.log(data);
-      this.todos.addTask(data);
-    });
   }
 
   newTodo() {
@@ -46,9 +26,31 @@ export class TodoComponent implements OnInit {
       minWidth: '20rem',
       width: '80%',
       maxWidth: '40rem',
-      data: {
-        name: this.selectedName,
-      },
     });
+
+    newListRef.afterClosed().subscribe((data) => {
+      if (data) {
+        this.todos.addTodo(data);
+      }
+    });
+  }
+
+  newTask() {
+    if (this.todos.selectedTodo.id) {
+      const newTaskRef = this.dialog.open(TodoNewTaskComponent, {
+        minWidth: '20rem',
+        width: '80%',
+        maxWidth: '40rem',
+        data: {
+          listName: this.todos.selectedTodo.name,
+          time: new Date().toISOString(),
+        },
+      });
+      newTaskRef.afterClosed().subscribe((data) => {
+        if (data) {
+          this.todos.addTask(data);
+        }
+      });
+    }
   }
 }

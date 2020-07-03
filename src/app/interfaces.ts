@@ -20,4 +20,5 @@ export interface Todo {
   tasks: Task[];
   createdAt: string;
   selected?: boolean;
+  updatedAt?: string;
 }

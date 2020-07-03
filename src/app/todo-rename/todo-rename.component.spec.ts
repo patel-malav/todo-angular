@@ -8,9 +8,8 @@ describe('TodoRenameComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TodoRenameComponent ]
-    })
-    .compileComponents();
+      declarations: [TodoRenameComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

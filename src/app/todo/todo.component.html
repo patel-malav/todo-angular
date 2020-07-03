@@ -1,15 +1,25 @@
 <ng-container *ngIf="auth.user | async as user; else spinner">
-  <h1>{{ user.name }}</h1>
-  <h2>{{ (todos.selected | async)?.name | titlecase }}</h2>
+  <h1>{{ user.name | titlecase }}</h1>
+  <h2>
+    {{
+      (todos.selectedTodo?.name ? todos.selectedTodo.name : "select todo")
+        | titlecase
+    }}
+  </h2>
+
   <app-todo-list *ngIf="!todos.menuOpen; else menu"></app-todo-list>
+
   <ng-template #menu>
     <app-todo-menu></app-todo-menu>
   </ng-template>
   <nav>
     <div>
-      <button mat-icon-button (click)="toggleMenu()">
-        <mat-icon *ngIf="!todos.menuOpen">menu</mat-icon>
-        <mat-icon *ngIf="todos.menuOpen">close</mat-icon>
+      <button
+        mat-icon-button
+        (click)="todos.selectedTodo?.id ? toggleMenu() : null"
+      >
+        <mat-icon *ngIf="!todos.menuOpen">close</mat-icon>
+        <mat-icon *ngIf="todos.menuOpen">read_more</mat-icon>
       </button>
     </div>
     <div>

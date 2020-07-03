@@ -9,12 +9,20 @@
   overflow-y: auto;
 }
 
+#spinner {
+  align-self: center;
+  justify-self: center;
+  flex: 1 1 auto;
+  mat-spinner {
+    margin: 5rem;
+  }
+}
+
 #lists {
   flex: 1 1 auto;
   font-size: 1.8rem;
   button {
     margin: 0 0.2rem;
-    height: 3rem;
   }
   div {
     background-color: #fff;
