@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { ReplaySubject } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { ReplaySubject, Observable, of } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import jwt_decode from 'jwt-decode';
 import { Router } from '@angular/router';
+import { tap, catchError, switchMap } from 'rxjs/operators';
 
 interface User {
   id: string;
@@ -30,37 +31,35 @@ export class AuthService {
     this.router.navigate(['/login']);
   }
   emailSignIn(email: string, password: string) {
-    this.http
+    return this.http
       .post<{ token: string }>(environment.apiUrl + '/auth/login', {
         email,
         password,
       })
-      .subscribe(
-        ({ token }) => {
+      .pipe(
+        tap(({ token }) => {
           if (token) {
             localStorage.setItem('token', token);
             const decoded = jwt_decode<User>(token);
             this.user.next({ ...decoded, token });
             this.router.navigate(['/home']);
           }
-        },
-        (err) => console.error(err)
+        })
       );
   }
   emailSignUp(name: string, email: string, password: string) {
-    this.http
+    return this.http
       .post<{ ok: string }>(environment.apiUrl + '/auth/register', {
         name,
         email,
         password,
       })
-      .subscribe(
-        (resp) => {
+      .pipe(
+        tap((resp) => {
           if (resp.ok) {
             this.router.navigate(['/login']);
           }
-        },
-        ({ error }) => console.error(error)
+        })
       );
   }
   updatePassword(code: string, password: string) {

@@ -154,7 +154,6 @@ export class TodosService {
                 const selectedTodo = todos.find(
                   (todo) => todo.id === this.selectedTodo.id
                 );
-                console.warn(tasks);
                 selectedTodo.tasks = [...tasks];
                 return todos;
               })

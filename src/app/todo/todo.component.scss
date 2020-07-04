@@ -9,7 +9,6 @@
     "header title"
     "list list"
     "nav nav";
-  padding: 2rem;
 }
 
 h1 {
@@ -38,13 +37,15 @@ nav {
   align-items: center;
 
   div {
-    flex: 0 1 7.5rem;
+    width: 7.5rem;
+    display: flex;
+    justify-content: center;
   }
 
   button[mat-mini-fab] {
     height: 4rem;
     width: 4rem;
-    margin: 0 4rem;
+    margin: 0 auto;
     ::ng-deep .mat-button-wrapper {
       line-height: 3rem;
       padding: 0;
@@ -60,4 +61,51 @@ nav {
 #spinner {
   grid-area: 2/1/3/3;
   margin: auto;
+}
+
+/*==========  Mobile First Method  ==========*/
+/* Custom, iPhone Retina */
+@media only screen and (min-width: 320px) {
+  :host {
+    padding: 0.5rem;
+    grid-template-columns: 1fr minmax(12rem, min-content);
+    h1 {
+      place-self: center;
+      font: 300 3rem/4rem Roboto;
+      grid-area: header;
+    }
+    h2 {
+      place-self: center;
+      font: 300 1.5rem/2.5rem Roboto;
+      grid-area: title;
+    }
+  }
+}
+/* Extra Small Devices, Phones */
+@media only screen and (min-width: 480px) {
+  :host {
+    padding: 1rem;
+  }
+}
+/* Small Devices, Tablets */
+@media only screen and (min-width: 768px) {
+  :host {
+    padding: 2rem;
+    h1 {
+      place-self: start;
+      font: 300 4rem/5rem Roboto;
+      grid-area: header;
+    }
+    h2 {
+      place-self: center;
+      font: 300 2rem/3rem Roboto;
+      grid-area: title;
+    }
+  }
+}
+/* Medium Devices, Desktops */
+@media only screen and (min-width: 992px) {
+}
+/* Large Devices, Wide Screens */
+@media only screen and (min-width: 1200px) {
 }

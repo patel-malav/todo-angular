@@ -25,6 +25,7 @@
     color="accent"
     [disabled]="!registerForm.valid"
   >
-    Register
+    {{ submitted ? "" : "Login" }}
+    <mat-spinner *ngIf="submitted" diameter="36"></mat-spinner>
   </button>
 </form>
